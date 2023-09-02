@@ -18,9 +18,17 @@
       <h1 class="bg-blue-800 text-white text-4xl p-4 text-center w-full">
         Smart India Hackathon Registration Form
       </h1>
+      <div class="bg-blue-100 text-indigo-800 p-2 w-full">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem ut
+          magnam possimus maxime quis, minus quasi non velit autem aliquam
+          labore quo quae sint vero?
+        </p>
+      </div>
       <div
         class="w-full overflow-auto"
-        x-data="{studentList:[
+        x-data="{          
+          teamdb:{},studentList:[
         {title:'Team Leader',name:'',is_leader:true,email:'',contact:'',gender:'MALE'},
         {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'MALE'},
         {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'MALE'},
@@ -29,7 +37,58 @@
         {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'FEMALE'}
         ]}"
       >
-        <form x-on:submit.prevent="console.log(studentList)">
+        <form
+          x-on:submit.prevent="console.log(studentList);console.log(teamdb);"
+        >
+          <div class="flex flex-col border-b my-2 p-2 border-slate-500">
+            <label for="teamname">Team Name</label>
+            <input
+              class="p-2 border"
+              x-model="teamdb.team_name"
+              type="text"
+              id="teamname"
+              required
+            />
+          </div>
+          <div class="flex flex-col border-b my-2 p-2 border-slate-500">
+            <label for="teamdesc">Team Description</label>
+            <textarea
+              class="p-2 border"
+              x-model="teamdb.description"
+              type="text"
+              id="teamdesc"
+            ></textarea>
+          </div>
+          <div class="flex flex-col border-b my-2 p-2 border-slate-500">
+            <label for="teamdefination">Definition</label>
+            <input
+              class="p-2 border"
+              x-model="teamdb.defination"
+              type="text"
+              id="teamdefination"
+              required
+            />
+          </div>
+          <div class="flex flex-col border-b my-2 p-2 border-slate-500">
+            <label for="domain">Domain</label>
+            <input
+              class="p-2 border"
+              x-model="teamdb.domain"
+              type="text"
+              id="domain"
+              required
+            />
+          </div>
+          <div class="flex flex-col border-b my-2 p-2 border-slate-500">
+            <label for="psumber">PS Number</label>
+            <input
+              class="p-2 border"
+              x-model="teamdb.psumber"
+              type="text"
+              id="psnumber"
+              required
+            />
+          </div>
           <table class="w-full border">
             <thead>
               <tr>
@@ -84,9 +143,11 @@
               </template>
             </tbody>
           </table>
-
-          <div class="my-4 flex justify-end p-2 border">
-            <button class="bg-blue-500 text-white border p-2" type="submit">
+          <div class="my-4 p-2">
+            <button
+              class="bg-blue-500 text-white border p-2 w-full rounded"
+              type="submit"
+            >
               SUBMIT
             </button>
           </div>
