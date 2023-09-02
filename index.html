@@ -14,7 +14,7 @@
     ></script>
   </head>
   <body>
-    <div>
+    <div class="mx-auto p-2">
       <h1 class="bg-blue-800 text-white text-4xl p-4 text-center w-full">
         Smart India Hackathon Registration Form
       </h1>
@@ -29,56 +29,68 @@
         {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'FEMALE'}
         ]}"
       >
-        <table class="w-full border">
-          <thead>
-            <tr>
-              <th class="bg-gray-800 text-white border p-2"></th>
-              <th class="bg-gray-800 text-white border p-2">Full Name</th>
-              <th class="bg-gray-800 text-white border p-2">Gender</th>
-              <th class="bg-gray-800 text-white border p-2">Email</th>
-              <th class="bg-gray-800 text-white border p-2">Contact</th>
-            </tr>
-          </thead>
-          <tbody>
-            <template x-for="record in studentList">
+        <form x-on:submit.prevent="console.log(studentList)">
+          <table class="w-full border">
+            <thead>
               <tr>
-                <td class="border px-2 text-center py-2 font-bold">
-                  <p x-text="record.title"></p>
-                </td>
-                <td class="border px-2 text-center py-2">
-                  <input
-                    class="border px-2 py-1 rounded w-full"
-                    x-model="record.name"
-                    type="text"
-                  />
-                </td>
-                <td class="border px-2 text-center py-2">
-                  <select
-                    class="border px-2 py-1 rounded w-full"
-                    x-model="record.gender"
-                  >
-                    <option value="MALE">Male</option>
-                    <option value="FEMALE">Female</option>
-                  </select>
-                </td>
-                <td class="border px-2 text-center py-2">
-                  <input
-                    class="border px-2 py-1 rounded w-full"
-                    x-model="record.name"
-                    type="email"
-                  />
-                </td>
-                <td class="border px-2 text-center py-2">
-                  <input
-                    class="border px-2 py-1 rounded w-full"
-                    x-model="record.name"
-                    type="text"
-                  />
-                </td>
+                <th class="bg-gray-800 text-white border p-2"></th>
+                <th class="bg-gray-800 text-white border p-2">Full Name</th>
+                <th class="bg-gray-800 text-white border p-2">Gender</th>
+                <th class="bg-gray-800 text-white border p-2">Email</th>
+                <th class="bg-gray-800 text-white border p-2">Contact</th>
               </tr>
-            </template>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <template x-for="record in studentList">
+                <tr>
+                  <td class="border px-2 text-center py-2 font-bold">
+                    <p x-text="record.title"></p>
+                  </td>
+                  <td class="border px-2 text-center py-2">
+                    <input
+                      class="border px-2 py-1 rounded w-full"
+                      x-model="record.name"
+                      type="text"
+                      required
+                    />
+                  </td>
+                  <td class="border px-2 text-center py-2">
+                    <select
+                      class="border px-2 py-1 rounded w-full"
+                      x-model="record.gender"
+                      required
+                    >
+                      <option value="MALE">Male</option>
+                      <option value="FEMALE">Female</option>
+                    </select>
+                  </td>
+                  <td class="border px-2 text-center py-2">
+                    <input
+                      class="border px-2 py-1 rounded w-full"
+                      x-model="record.email"
+                      type="email"
+                      required
+                    />
+                  </td>
+                  <td class="border px-2 text-center py-2">
+                    <input
+                      class="border px-2 py-1 rounded w-full"
+                      x-model="record.contact"
+                      type="text"
+                      required
+                    />
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+
+          <div class="my-4 flex justify-end p-2 border">
+            <button class="bg-blue-500 text-white border p-2" type="submit">
+              SUBMIT
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </body>
