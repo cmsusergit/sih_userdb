@@ -5,8 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
   </head>
   <body>
-    <h1>Lorem ipsum dolor sit amet.</h1>
+    <div>
+      <h1 class="bg-blue-800 text-white text-4xl p-4 text-center w-full">
+        Smart India Hackathon Registration Form
+      </h1>
+      <div
+        class="w-full overflow-auto"
+        x-data="{studentList:[
+        {title:'Team Leader',name:'',is_leader:true,email:'',contact:'',gender:'MALE'},
+        {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'MALE'},
+        {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'MALE'},
+        {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'MALE'},
+        {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'MALE'},
+        {title:'Team Member',name:'',is_leader:false,email:'',contact:'',gender:'FEMALE'}
+        ]}"
+      >
+        <table class="w-full border">
+          <thead>
+            <tr>
+              <th class="bg-gray-800 text-white border p-2"></th>
+              <th class="bg-gray-800 text-white border p-2">Full Name</th>
+              <th class="bg-gray-800 text-white border p-2">Gender</th>
+              <th class="bg-gray-800 text-white border p-2">Email</th>
+              <th class="bg-gray-800 text-white border p-2">Contact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="record in studentList">
+              <tr>
+                <td class="border px-2 text-center py-2 font-bold">
+                  <p x-text="record.title"></p>
+                </td>
+                <td class="border px-2 text-center py-2">
+                  <input
+                    class="border px-2 py-1 rounded"
+                    x-model="record.name"
+                    type="text"
+                  />
+                </td>
+                <td class="border px-2 text-center py-2">
+                  <select
+                    class="border px-2 py-1 rounded"
+                    x-model="record.gender"
+                  >
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                  </select>
+                </td>
+                <td class="border px-2 text-center py-2">
+                  <input
+                    class="border px-2 py-1 rounded"
+                    x-model="record.name"
+                    type="email"
+                  />
+                </td>
+                <td class="border px-2 text-center py-2">
+                  <input
+                    class="border px-2 py-1 rounded"
+                    x-model="record.name"
+                    type="text"
+                  />
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </body>
 </html>
