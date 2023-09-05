@@ -14,14 +14,14 @@
     ></script>
   </head>
   <body>
-    <div class="mx-auto p-2">
-      <h1 class="bg-blue-800 text-white text-4xl p-4 text-center w-full">
+    <div class="mx-auto lg:w-10/12 md:w-11/12 p-2 w-full">
+      <h1 class="bg-slate-800 text-white text-4xl p-4 text-center w-full">
         Smart India Hackathon Registration Form
       </h1>
       <div class="w-full overflow-auto" x-data="getAlpineDt()">
         <form x-on:submit.prevent="onsubmit(teamdb,studentList)">
           <div class="flex flex-col border-b my-2 p-2 border-slate-500">
-            <label for="teamname">Team Name</label>
+            <label class="mb-1 font-bold" for="teamname">Team Name</label>
             <input
               class="p-2 border"
               x-model="teamdb.team_name"
@@ -31,7 +31,9 @@
             />
           </div>
           <div class="flex flex-col border-b my-2 p-2 border-slate-500">
-            <label for="teamdesc">Team Description</label>
+            <label class="mb-1 font-bold" for="teamdesc"
+              >Team Description</label
+            >
             <textarea
               class="p-2 border"
               x-model="teamdb.description"
@@ -40,7 +42,9 @@
             ></textarea>
           </div>
           <div class="flex flex-col border-b my-2 p-2 border-slate-500">
-            <label for="teamdefination">Definition</label>
+            <label class="mb-1 font-bold" for="teamdefination"
+              >Definition</label
+            >
             <input
               class="p-2 border"
               x-model="teamdb.defination"
@@ -49,27 +53,33 @@
               required
             />
           </div>
-          <div class="flex flex-col border-b my-2 p-2 border-slate-500">
-            <label for="domain">Domain</label>
-            <input
-              class="p-2 border"
-              x-model="teamdb.domain"
-              type="text"
-              id="domain"
-              required
-            />
+          <div class="flex md:flex-row flex-col w-full">
+            <div
+              class="flex flex-col border-b my-2 p-2 border-slate-500 w-full"
+            >
+              <label class="mb-1 font-bold" for="domain">Domain</label>
+              <input
+                class="p-2 border"
+                x-model="teamdb.domain"
+                type="text"
+                id="domain"
+                required
+              />
+            </div>
+            <div
+              class="flex flex-col border-b my-2 p-2 border-slate-500 w-full"
+            >
+              <label class="mb-1 font-bold" for="psumber">PS Number</label>
+              <input
+                class="p-2 border"
+                x-model="teamdb.psumber"
+                type="text"
+                id="psnumber"
+                required
+              />
+            </div>
           </div>
-          <div class="flex flex-col border-b my-2 p-2 border-slate-500">
-            <label for="psumber">PS Number</label>
-            <input
-              class="p-2 border"
-              x-model="teamdb.psumber"
-              type="text"
-              id="psnumber"
-              required
-            />
-          </div>
-          <table class="w-full border">
+          <!-- <table class="w-full border">
             <thead>
               <tr>
                 <th class="bg-gray-800 text-white border p-2"></th>
@@ -122,14 +132,159 @@
                 </tr>
               </template>
             </tbody>
-          </table>
-          <div class="my-4 p-2">
+          </table> -->
+          <!-- 
+
+
+
+
+
+
+ -->
+          <div class="w-full p-2">
+            <div class="bg-gray-200 w-full md:grid md:grid-cols-5 hidden">
+              <div class="bg-gray-800 text-white border p-2 text-center"></div>
+              <div class="bg-gray-800 text-white border p-2 text-center">
+                Full Name
+              </div>
+              <div class="bg-gray-800 text-white border p-2 text-center">
+                Gender
+              </div>
+              <div class="bg-gray-800 text-white border p-2 text-center">
+                Email
+              </div>
+              <div class="bg-gray-800 text-white border p-2 text-center">
+                Contact
+              </div>
+            </div>
+
+            <div>
+              <template x-for="record in studentList">
+                <div
+                  class="
+                    w-full
+                    grid grid-cols-1
+                    space-y-2
+                    md:space-y-0
+                    border-slate-700
+                    md:grid-cols-5
+                    border
+                    md:border-0 md:border-b
+                    border-2
+                    my-2
+                  "
+                >
+                  <div
+                    class="
+                      px-2
+                      text-center
+                      py-2
+                      md:bg-white md:text-slate-800
+                      bg-gray-700
+                      text-white
+                      font-bold
+                    "
+                  >
+                    <p x-text="record.title"></p>
+                  </div>
+                  <div
+                    class="
+                      text-lg
+                      px-2
+                      md:text-center
+                      pb-4
+                      md:py-2 md:border-b-0
+                      border-b
+                    "
+                  >
+                    <label class="md:hidden font-bold">Full Name</label>
+                    <input
+                      class="border px-2 py-1 rounded w-full"
+                      x-model="record.name"
+                      type="text"
+                      required
+                    />
+                  </div>
+                  <div
+                    class="
+                      text-lg
+                      px-2
+                      md:text-center
+                      pb-4
+                      md:py-2 md:border-b-0
+                      border-b
+                    "
+                  >
+                    <label class="md:hidden font-bold">Gender</label>
+                    <select
+                      class="border px-2 py-1 rounded w-full"
+                      x-model="record.gender"
+                      required
+                    >
+                      <option value="MALE">Male</option>
+                      <option value="FEMALE">Female</option>
+                    </select>
+                  </div>
+                  <div
+                    class="
+                      text-lg
+                      px-2
+                      md:text-center
+                      pb-4
+                      md:py-2 md:border-b-0
+                      border-b
+                    "
+                  >
+                    <label class="md:hidden font-bold">Email</label>
+                    <input
+                      class="border px-2 py-1 rounded w-full"
+                      x-model="record.email"
+                      type="email"
+                      required
+                    />
+                  </div>
+                  <div
+                    class="
+                      text-lg
+                      px-2
+                      md:text-center
+                      pb-4
+                      md:py-2 md:border-b-0
+                      border-b
+                    "
+                  >
+                    <label class="md:hidden font-bold">Contact Number</label>
+                    <input
+                      class="border px-2 py-1 rounded w-full"
+                      x-model="record.contact"
+                      type="text"
+                      required
+                    />
+                  </div>
+                  <div class="mb-2 border-b"></div>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <div class="mb-4 p-2">
             <button
-              class="bg-blue-500 text-white border p-2 w-full rounded"
+              class="
+                bg-slate-800
+                hover:bg-slate-700
+                text-white
+                border
+                p-2
+                md:w-1/4 md:float-right
+                w-full
+                rounded
+              "
               type="submit"
             >
               SUBMIT
             </button>
+
+            <div class="clear-both h-4"></div>
           </div>
         </form>
       </div>

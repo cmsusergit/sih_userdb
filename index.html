@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="mx-auto p-2">
-      <h1 class="bg-blue-800 text-white text-4xl p-4 text-center w-full">
+      <h1 class="bg-slate-800 text-white text-4xl p-4 text-center w-full">
         Smart India Hackathon Registration Form
       </h1>
       <div class="bg-blue-100 text-indigo-800 p-2 w-full">
@@ -25,7 +25,7 @@
         </p>
       </div>
       <div
-        x-data="{isProceed:true}"
+        x-data="{isProceed:false}"
         class="bg-blue-100 text-indigo-800 p-2 w-full text-center"
       >
         <label
@@ -40,7 +40,10 @@
           />I have read & understood all above instructions
         </label>
         <br />
-        <a class="text-lg p-1 underline hover:font-bold" href="test.html"
+        <a
+          x-show="isProceed"
+          class="text-lg p-1 underline hover:font-bold"
+          href="test.html"
           >Please, Proceed To Registration Form</a
         >
       </div>
