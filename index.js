@@ -1,64 +1,65 @@
 const getAlpineDt = () => {
   return {
-    teamdb: {},
-    studentList: [
-      {
-        title: 'Team Leader',
-        name: '',
-        is_leader: true,
-        email: '',
-        contact: '',
-        gender: 'MALE',
-      },
-      {
-        title: 'Team Member',
-        name: '',
-        is_leader: false,
-        email: '',
-        contact: '',
-        gender: 'MALE',
-      },
-      {
-        title: 'Team Member',
-        name: '',
-        is_leader: false,
-        email: '',
-        contact: '',
-        gender: 'MALE',
-      },
-      {
-        title: 'Team Member',
-        name: '',
-        is_leader: false,
-        email: '',
-        contact: '',
-        gender: 'MALE',
-      },
-      {
-        title: 'Team Member',
-        name: '',
-        is_leader: false,
-        email: '',
-        contact: '',
-        gender: 'MALE',
-      },
-      {
-        title: 'Team Member',
-        name: '',
-        is_leader: false,
-        email: '',
-        contact: '',
-        gender: 'FEMALE',
-      },
-    ],
+    teamdb: {
+      team_member_list: [
+        {
+          title: 'Team Leader',
+          name: '',
+          is_leader: true,
+          email: '',
+          contact: '',
+          gender: 'MALE',
+        },
+        {
+          title: 'Team Member',
+          name: '',
+          is_leader: false,
+          email: '',
+          contact: '',
+          gender: 'MALE',
+        },
+        {
+          title: 'Team Member',
+          name: '',
+          is_leader: false,
+          email: '',
+          contact: '',
+          gender: 'MALE',
+        },
+        {
+          title: 'Team Member',
+          name: '',
+          is_leader: false,
+          email: '',
+          contact: '',
+          gender: 'MALE',
+        },
+        {
+          title: 'Team Member',
+          name: '',
+          is_leader: false,
+          email: '',
+          contact: '',
+          gender: 'MALE',
+        },
+        {
+          title: 'Team Member',
+          name: '',
+          is_leader: false,
+          email: '',
+          contact: '',
+          gender: 'FEMALE',
+        },
+      ],
+    },
+    loading: false,
   };
 };
 
 const onsubmit = async (teamdb, studentList) => {
-  console.log(teamdb, studentList);
+  console.log(teamdb);
   const url =
     'https://few-cpu.pockethost.io//api/collections/SIH_STUDENT_TEAM/records';
-  teamdb['team_member_list'] = studentList;
   const response = await fetch(url, {
     method: 'POST',
     headers: {

@@ -19,7 +19,9 @@
         Smart India Hackathon Registration Form
       </h1>
       <div class="w-full overflow-auto" x-data="getAlpineDt()">
-        <form x-on:submit.prevent="onsubmit(teamdb,studentList)">
+        <form
+          x-on:submit.prevent="loading=true;await onsubmit(teamdb);loading=false"
+        >
           <div class="flex flex-col border-b my-2 p-2 border-slate-500">
             <label class="mb-1 font-bold" for="teamname">Team Name</label>
             <input
@@ -97,7 +99,7 @@
             </div>
 
             <div>
-              <template x-for="record in studentList">
+              <template x-for="record in teamdb.team_member_list">
                 <div
                   class="
                     w-full
@@ -216,10 +218,14 @@
                 md:w-1/4 md:float-right
                 w-full
                 rounded
+                disabled:bg-gray-200 disabled:text-gray-800
               "
               type="submit"
+              x-bind:disabled="loading"
             >
-              SUBMIT
+              <template x-if="!loading"><span>SUBMIT</span></template>
+
+              <template x-if="loading"><span>Please, Wait....</span></template>
             </button>
 
             <div class="clear-both h-4"></div>
