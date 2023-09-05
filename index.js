@@ -67,7 +67,18 @@ const onsubmit = async (teamdb, studentList) => {
 
     body: JSON.stringify(teamdb),
   });
-  const dt = await response.json();
-  console.log('----', dt);
-  return dt;
+  try {
+    const dt = await response.json();
+    if (dt) {
+      alert('Successfully Submitted');
+      window.location.href = 'https://www.sih.gov.in/';
+      return;
+    }
+
+    alert('Something Went Wrong !!!!');
+    return;
+  } catch (error) {
+    alert('Something Went Wrong !!!!' + error);
+    return;
+  }
 };
